@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="w-50 m-auto">
+            {% if messages %}
+                {% for message in messages %}
+                    <div{% if message.tags %} class=" alert {{ message.tags }}"{% endif %} > {{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <hr>
+            <form class="shadow p-3" action="" method="POST">
+                {% csrf_token %}
+                {% for fm in forms %}
+                    <div class="form-group">
+                        {{ fm.label_tag }}
+                        {{ fm }}
+                        <small class="text-danger">{{ fm.errors|striptags }}</small>
+                    </div>
+                {% endfor %}
+                <!-- {{ forms.as_p }} -->
+                <input class="btn btn-success" type="submit" value="Submit">
+                <br>
+                <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+                    class="text-danger">Login Now</a> </small></div>
+                 {% if forms.non_field_errors %}
+                 {% for error in forms.non_field_errors %}
+                 <p class="alert alert-danger my-3">{{error}}</p>
+                 {% endfor %}
+                 {% endif %}
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

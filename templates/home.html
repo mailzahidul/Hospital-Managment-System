@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div{% if message.tags %} class=" alert {{ message.tags }}"{% endif %} > {{ message }}</div>
+        {% endfor %}
+    {% endif %}
+<hr>
+<h1 class="py-5 text-center">Welcome to Hostpital Managment System</h1>
+{% endblock %}

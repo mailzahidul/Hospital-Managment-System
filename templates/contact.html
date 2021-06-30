@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Contact Us {% endblock %}
+
+{% block content %}
+    <h2 class="text-center py-2">Contact Us</h2>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="p-4">
+                <h4><i class="fas fa-phone-alt fa-xs"></i> Number</h4><hr>
+                <p class="font-weight-bold">+88-0191383434</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-4">
+                <h4><i class="fas fa-envelope fa-xs"></i> Send-mail</h4><hr>
+                <a href="mailto: bsmrmch@bd.com">bsmrmch@bd.com</a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-4">
+                <h4><i class="fas fa-clock fa-xs"></i> Office Time</h4><hr>
+                <p>24/7 hours</p>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 text-center">
+        <h4><i class="fas fa-map-pin fa-xs"></i> Office Address</h4><hr>
+        <p class="text-center py-3"><strong>Address:</strong> Bangabandhu Sheikh Mujib Medical University, BSMMU, Dhaka 1000</p>
+        <!--Google map-->
+        <div id="map-container-google-2" class="z-depth-1-half map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14609.287071521052!2d90.40353481732191!3d23.735902520159897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8954649cee5%3A0x3bdcd530be93b17a!2sBangabandhu%20Sheikh%20Mujib%20Medical%20University%20Hospital!5e0!3m2!1sen!2sbd!4v1624860149875!5m2!1sen!2sbd" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+{% endblock %}
