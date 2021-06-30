@@ -96,7 +96,11 @@ def edit_doctor(request, id):
     return render(request, 'doctor/doctor_edit.html', context)
 
 def view_doctor(request, id):
-    return render(request, 'doctor/view_doctor.html')
+    doctor = Doctor.objects.get(id=id)
+    context ={
+        'doctor': doctor
+    }
+    return render(request, 'doctor/view_doctor.html', context)
 
 def patient_list(request):
     return render(request, 'patient_list.html')

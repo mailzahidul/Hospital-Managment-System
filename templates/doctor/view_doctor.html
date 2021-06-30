@@ -6,7 +6,19 @@
     <div class="col-lg-12 col-md-12">
         <div class="py-4">
             <h2 class="text-center pb-5">Doctor Information</h2>
-            <p><strong class="mr-4">Doctor's Name:</strong> Zahdul</p>
+           <div class="float-right">
+               <img height="180" width="150" src="{{ doctor.photo.url }}" alt="">
+           </div> 
+            <p><strong class="mr-4">Doctor's Name:</strong> {{ doctor.name }}</p>
+            <p><strong class="mr-4">Doctor's Email:</strong> {{ doctor.email }}</p>
+            <p><strong class="mr-4">Doctor's Phone:</strong> {{ doctor.phone }}</p>
+            <p><strong class="mr-4">Doctor's Gender:</strong> {{ doctor.gender }}</p>
+            <p><strong class="mr-4">Doctor's Alt. Phone:</strong> {{ doctor.alternative_phone }}</p>
+            <p><strong class="mr-4">Doctor's 2nd Shamber:</strong> {{ doctor.second_chamber }}</p>
+            <p><strong class="mr-4">Doctor's 3rd Shamber:</strong> {{ doctor.third_chamber }}</p>
+            <p><strong class="mr-4">Doctor's Address:</strong> {{ doctor.present_address }}</p>
+            <p><strong class="mr-4">Doctor's Permanent Address:</strong> {{ doctor.permanent_address }}</p>
+            <p><strong class="mr-4">Doctor's Designation:</strong> {{ doctor.designation }}</p>
         </div>
     </div>
 {% endblock %}

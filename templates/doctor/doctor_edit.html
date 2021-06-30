@@ -3,10 +3,12 @@
 
 {% block content %}
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <form action="" method="POST" class="shadow">
-            {% csrf_token %}
-            {{ forms.as_p }}
-            <input class="btn btn-primary" type="submit" value="Submit">
-        </form>
+        <div class="shadow-lg">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ forms.as_p }}
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 {% endblock %}
