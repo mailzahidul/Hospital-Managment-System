@@ -14,4 +14,7 @@ admin.site.register(Designation)
 admin.site.register(Patient)
 
 
+admin.site.register(Gender)
+
+
 admin.site.register(Appointment)

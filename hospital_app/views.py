@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm, UserLoginForm
+from .forms import RegistrationForm, UserLoginForm, EditDoctorForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+from .models import Doctor
 # Create your views here.
 
 
@@ -69,8 +70,33 @@ def about(request):
 
 
 def doctor_list(request):
-    return render(request, 'doctor_list.html')
+    doctors = Doctor.objects.order_by('id')[:5]
+    context={
+        'doctors':doctors
+    }
+    return render(request, 'doctor/doctor_list.html', context)
 
+
+def delete_doctor(request, id):
+    doctor = Doctor.objects.get(id=id)
+    doctor.delete()
+    return redirect('doctor_list')
+
+
+def edit_doctor(request, id):
+    doctor = Doctor.objects.get(id=id)
+    forms = EditDoctorForm(instance=doctor)
+    if request.method == 'POST':
+        forms = EditDoctorForm(request.POST, instance=doctor)
+        forms.save()
+        return redirect('doctor/doctor_list')
+    context = {
+        'forms':forms
+    }
+    return render(request, 'doctor/doctor_edit.html', context)
+
+def view_doctor(request, id):
+    return render(request, 'doctor/view_doctor.html')
 
 def patient_list(request):
     return render(request, 'patient_list.html')

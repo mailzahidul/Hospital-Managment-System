@@ -11,6 +11,9 @@ class Designation(models.Model):
 class Gender(models.Model):
     gender = models.CharField(max_length=6)
 
+    def __str__(self):
+        return self.gender
+
 
 class Doctor(models.Model):
     name = models.CharField(max_length=50)
