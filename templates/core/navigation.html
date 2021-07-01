@@ -20,11 +20,20 @@
         {% if request.user.is_authenticated %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Appointment
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'appointment_list' %}">Appointment List</a>
+            <a class="dropdown-item" href="{% url 'appointment' %}">Get Appointment</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Doctor
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="{% url 'doctor_list' %}">Doctor List</a>
-            <a class="dropdown-item" href="#">Add Doctor</a>
+            <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -33,7 +42,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="{% url 'patient_list' %}">Patient List</a>
-            <a class="dropdown-item" href="#">Add Patient</a>
+            <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
           </div>
         </li>
           <li class="nav-item">
@@ -44,10 +53,7 @@
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
         {% endif %}
+
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
     </div>
   </nav>

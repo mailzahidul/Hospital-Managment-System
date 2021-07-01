@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Doctor {% endblock %}
+
+
+{% block content %}
+    <h2 class="text-center py-3">Doctor Add</h2>
+    <div class="w-75 m-auto">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ forms.as_p }}
+            <input class="float-right btn btn-outline-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+{% endblock %}

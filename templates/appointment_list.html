@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Appointments {% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">Appointments:</div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Sl No.</th>
+                    <th scope="col">Patient's Name: </th>
+                    <th scope="col">Doctor's Name: </th>
+                    <th scope="col">Date: </th>
+                    <th scope="col">Time: </th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for app in appointment %}
+                  <tr>
+                    <th scope="row">{{ doctor.id }}</th>
+                    <td>{{ app.patient.name }}</td>
+                    <td>{{ app.doctor.name }}</td>
+                    <td>{{ app.date }}</td>
+                    <td>{{ app.time }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+{% endblock %}

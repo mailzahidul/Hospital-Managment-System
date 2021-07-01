@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm, UserLoginForm, EditDoctorForm
+from .forms import RegistrationForm, UserLoginForm, AddandEditDoctorForm, AppintmentForm, AddPatientForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from .models import Doctor
+from .models import *
 # Create your views here.
 
 
@@ -77,6 +77,26 @@ def doctor_list(request):
     return render(request, 'doctor/doctor_list.html', context)
 
 
+def add_appointment(request):
+    forms = AppintmentForm()
+    if request.method == 'POST':
+        forms = AppintmentForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('home')
+    context = {
+        'forms':forms
+    }
+    return render(request, 'appointment.html', context)
+
+def appointment_list(request):
+    appointment = Appointment.objects.all()
+    context = {
+        'appointment': appointment
+    }
+    return render(request, 'appointment_list.html', context)
+
+
 def delete_doctor(request, id):
     doctor = Doctor.objects.get(id=id)
     doctor.delete()
@@ -85,11 +105,11 @@ def delete_doctor(request, id):
 
 def edit_doctor(request, id):
     doctor = Doctor.objects.get(id=id)
-    forms = EditDoctorForm(instance=doctor)
+    forms = AddandEditDoctorForm(instance=doctor)
     if request.method == 'POST':
-        forms = EditDoctorForm(request.POST, instance=doctor)
+        forms = AddandEditDoctorForm(request.POST, instance=doctor)
         forms.save()
-        return redirect('doctor/doctor_list')
+        return redirect('doctor_list')
     context = {
         'forms':forms
     }
@@ -102,5 +122,36 @@ def view_doctor(request, id):
     }
     return render(request, 'doctor/view_doctor.html', context)
 
+
+def add_doctor(request):
+    forms = AddandEditDoctorForm()
+    if request.method == 'POST':
+        forms = AddandEditDoctorForm(request.POST, request.FILES)
+        if forms.is_valid():
+            forms.save()
+            return redirect('doctor_list')
+    context={
+        'forms':forms
+    }
+    return render(request, 'doctor/add_doctor.html', context)
+
+
 def patient_list(request):
-    return render(request, 'patient_list.html')
+    patients = Patient.objects.all()
+    context ={
+        'patients' : patients
+    }
+    return render(request, 'patient/patient_list.html', context)
+
+
+def add_patient(request):
+    forms = AddPatientForm()
+    if request.method == 'POST':
+        forms = AddPatientForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('patient_list')
+    context = {
+        'forms':forms
+    }
+    return render(request, 'patient/add_patient.html', context)

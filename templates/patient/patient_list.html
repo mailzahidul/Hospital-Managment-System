@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Patient List{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">Patient List:</div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Patient Relative name</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for patient in patients %}
+                  <tr>
+                    <th scope="row">{{ patient.id }}</th>
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.relative_name }}</td>
+                    <td>{{ patient.mobile }}</td>
+                    <td>{{ patient.address }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+{% endblock %}
