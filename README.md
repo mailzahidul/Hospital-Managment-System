@@ -1,5 +1,8 @@
 # Hospital Managment System
 
+
+![hms new](https://user-images.githubusercontent.com/20764328/124301906-497b9780-db82-11eb-93e2-fe7772be781a.PNG)
+
 # Tools
 1. Bootstrap 4
 2. ajax
